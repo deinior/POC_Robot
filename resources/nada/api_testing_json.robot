@@ -15,6 +15,8 @@ Get Comments
     ${comments}=    Evaluate    json.loads($response.content)
     Length Should Be    ${comments}    2
     ${first_comment}=    Get From List    ${comments}    0
+    Log     ${first_comment}
+    Log     ${comments}
     Should Be Equal As Strings    ${first_comment['id']}    1
     Should Be Equal As Strings    ${first_comment['text']}    a comment about post 1
     Should Be Equal As Strings    ${first_comment['postId']}    1
@@ -41,4 +43,4 @@ Create Post and Verify Data
     Should Be Equal As Strings    ${created_post['id']}    3
     Should Be Equal As Strings    ${created_post['title']}    new title
     Should Be Equal As Strings    ${created_post['views']}    150
-    Dictionary Should Contain Item    ${created_post}    title   new title
+    Dictionary Should Contain Item    ${created_post}    title   new title 

@@ -1,141 +1,739 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.2 on win32)" generated="2024-03-24T02:19:35.155193" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.2 on win32)" generated="2024-03-25T22:30:06.509255" rpa="false" schemaversion="5">
 <suite id="s1" name="Api Testing" source="D:\projetos\api_testing">
 <suite id="s1-s1" name="Tests" source="D:\projetos\api_testing\tests">
-<suite id="s1-s1-s1" name="Api Testing2" source="D:\projetos\api_testing\tests\api_testing2.robot">
-<test id="s1-s1-s1-t1" name="Create Post and Verify Data" line="30">
+<suite id="s1-s1-s1" name="rotaProfiles" source="D:\projetos\api_testing\tests\rotaProfiles.robot">
+<test id="s1-s1-s1-t1" name="Criar Postagem e Verificar Dados" line="10">
+<kw name="Given que a API está disponível" owner="ajuda">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2024-03-24T02:19:35.306809" level="INFO">Creating Session using : alias=JSONServer, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2024-03-25T22:30:06.668499" level="INFO">Creating Session using : alias=JSONServer, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>JSONServer</arg>
 <arg>${BASE_URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2024-03-24T02:19:35.305810" elapsed="0.000999"/>
+<status status="PASS" start="2024-03-25T22:30:06.668499" elapsed="0.000000"/>
 </kw>
+<status status="PASS" start="2024-03-25T22:30:06.666505" elapsed="0.001994"/>
+</kw>
+<kw name="When eu realizar uma chamada POST com id &quot;4&quot;, título &quot;another title&quot;, e visualizações 200" owner="profiles" source_name="eu realizar uma chamada POST com id &quot;${post_id}&quot;, título &quot;${post_title}&quot;, e visualizações ${post_views}">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.307809" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<msg time="2024-03-25T22:30:06.671501" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
 <var>${headers}</var>
 <arg>Content-Type</arg>
 <arg>application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.307809" elapsed="0.000000"/>
+<status status="PASS" start="2024-03-25T22:30:06.671501" elapsed="0.000000"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.308809" level="INFO">${payload} = {'id': '3', 'title': 'new title', 'views': '150'}</msg>
+<msg time="2024-03-25T22:30:06.672501" level="INFO">${payload} = {'id': '4', 'title': 'another title', 'views': '200'}</msg>
 <var>${payload}</var>
-<arg>id=3</arg>
-<arg>title=new title</arg>
-<arg>views=150</arg>
+<arg>id=${post_id}</arg>
+<arg>title=${post_title}</arg>
+<arg>views=${post_views}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.308809" elapsed="0.000000"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.309809" level="INFO">{'id': '3', 'title': 'new title', 'views': '150'}</msg>
-<arg>${payload}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.309809" elapsed="0.000000"/>
+<status status="PASS" start="2024-03-25T22:30:06.671501" elapsed="0.001000"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2024-03-24T02:19:35.316809" level="INFO">POST Request : url=http://localhost:3000/posts 
+<msg time="2024-03-25T22:30:06.680463" level="INFO">POST Request : url=http://localhost:3000/posts 
  path_url=/posts 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '49'} 
- body=b'{"id": "3", "title": "new title", "views": "150"}' 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body=b'{"id": "4", "title": "another title", "views": "200"}' 
  </msg>
-<msg time="2024-03-24T02:19:35.316809" level="INFO">POST Response : url=http://localhost:3000/posts 
+<msg time="2024-03-25T22:30:06.681466" level="INFO">POST Response : url=http://localhost:3000/posts 
  status=201, reason=Created 
- headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Sun, 24 Mar 2024 05:19:35 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '57'} 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
  body={
-  "id": "3",
-  "title": "new title",
-  "views": "150"
+  "id": "4",
+  "title": "another title",
+  "views": "200"
 } 
  </msg>
-<msg time="2024-03-24T02:19:35.317811" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<msg time="2024-03-25T22:30:06.681466" level="INFO">${response} = &lt;Response [201]&gt;</msg>
 <var>${response}</var>
 <arg>JSONServer</arg>
 <arg>/posts</arg>
 <arg>json=${payload}</arg>
 <arg>headers=${headers}</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.310809" elapsed="0.007002"/>
+<status status="PASS" start="2024-03-25T22:30:06.672501" elapsed="0.008965"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.682851" level="INFO">${RESPONSE1} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.681466" elapsed="0.001385"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.319809" level="INFO">{
-  "id": "3",
-  "title": "new title",
-  "views": "150"
-}</msg>
-<arg>${response.text}</arg>
+<msg time="2024-03-25T22:30:06.683857" level="INFO">{'id': '4', 'title': 'another title', 'views': '200'}</msg>
+<arg>${RESPONSE1.json()}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.318809" elapsed="0.001000"/>
+<status status="PASS" start="2024-03-25T22:30:06.682851" elapsed="0.001006"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.670499" elapsed="0.013358"/>
+</kw>
+<kw name="Then o status code da resposta deve ser 201" owner="ajuda" source_name="o status code da resposta deve ser ${expected_status_code}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.686367" level="INFO">201</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.686367" elapsed="0.000000"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.320809" level="INFO">Argument types are:
+<msg time="2024-03-25T22:30:06.687366" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>201</arg>
+<arg>${RESPONSE1.status_code}</arg>
+<arg>${expected_status_code}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.319809" elapsed="0.001000"/>
+<status status="PASS" start="2024-03-25T22:30:06.686367" elapsed="0.000999"/>
 </kw>
+<status status="PASS" start="2024-03-25T22:30:06.685361" elapsed="0.002005"/>
+</kw>
+<kw name="And o id da postagem criada deve ser &quot;4&quot;" owner="profiles" source_name="o id da postagem criada deve ser &quot;${expected_post_id}&quot;">
 <kw name="Convert To Dictionary" owner="Collections">
-<msg time="2024-03-24T02:19:35.321811" level="INFO">${created_post} = {'id': '3', 'title': 'new title', 'views': '150'}</msg>
+<msg time="2024-03-25T22:30:06.690365" level="INFO">${created_post} = {'id': '4', 'title': 'another title', 'views': '200'}</msg>
 <var>${created_post}</var>
-<arg>${response.json()}</arg>
+<arg>${RESPONSE1.json()}</arg>
 <doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.320809" elapsed="0.002001"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-03-24T02:19:35.323808" level="INFO">Created Post: {'id': '3', 'title': 'new title', 'views': '150'}</msg>
-<arg>Created Post: ${created_post}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.322810" elapsed="0.000998"/>
+<status status="PASS" start="2024-03-25T22:30:06.689366" elapsed="0.000999"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${created_post['id']}</arg>
-<arg>3</arg>
+<arg>${expected_post_id}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.323808" elapsed="0.001001"/>
+<status status="PASS" start="2024-03-25T22:30:06.690365" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.688366" elapsed="0.002999"/>
+</kw>
+<kw name="And o título da postagem criada deve ser &quot;another title&quot;" owner="profiles" source_name="o título da postagem criada deve ser &quot;${expected_title}&quot;">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.694368" level="INFO">${created_post} = {'id': '4', 'title': 'another title', 'views': '200'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.693370" elapsed="0.000998"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${created_post['title']}</arg>
-<arg>new title</arg>
+<arg>${expected_title}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.324809" elapsed="0.001001"/>
+<status status="PASS" start="2024-03-25T22:30:06.694368" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.692369" elapsed="0.002998"/>
+</kw>
+<kw name="And as visualizações da postagem criada devem ser 200" owner="profiles" source_name="as visualizações da postagem criada devem ser ${expected_views}">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.697485" level="INFO">${created_post} = {'id': '4', 'title': 'another title', 'views': '200'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.697485" elapsed="0.001002"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${created_post['views']}</arg>
-<arg>150</arg>
+<arg>${expected_views}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.325810" elapsed="0.001000"/>
+<status status="PASS" start="2024-03-25T22:30:06.698487" elapsed="0.000000"/>
 </kw>
-<kw name="Dictionary Should Contain Item" owner="Collections">
-<msg time="2024-03-24T02:19:35.326810" level="INFO">False
-False</msg>
-<arg>${created_post}</arg>
-<arg>title</arg>
-<arg>new title</arg>
-<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
-<status status="PASS" start="2024-03-24T02:19:35.326810" elapsed="0.000000"/>
+<status status="PASS" start="2024-03-25T22:30:06.696486" elapsed="0.002001"/>
 </kw>
-<doc>Criar um novo post na API e verificar os dados</doc>
-<status status="PASS" start="2024-03-24T02:19:35.303809" elapsed="0.023999"/>
+<kw name="And eu realizar uma chamada DELETE com o id da postagem criada" owner="ajuda">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.701484" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.700485" elapsed="0.000999"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.704486" level="INFO">DELETE Request : url=http://localhost:3000/posts/4 
+ path_url=/posts/4 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-03-25T22:30:06.704486" level="INFO">DELETE Response : url=http://localhost:3000/posts/4 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "4",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.704486" level="INFO">${responseDelete} = &lt;Response [200]&gt;</msg>
+<var>${responseDelete}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${RESPONSE1.json()['id']}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.701484" elapsed="0.003002"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.705486" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${responseDelete}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.704486" elapsed="0.001510"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.700485" elapsed="0.005511"/>
+</kw>
+<doc>Como usuário, quero criar uma nova postagem na API e verificar seus dados</doc>
+<status status="PASS" start="2024-03-25T22:30:06.665218" elapsed="0.042783"/>
 </test>
-<status status="PASS" start="2024-03-24T02:19:35.178713" elapsed="0.150096"/>
+<test id="s1-s1-s1-t2" name="Deletar Postagem" line="20">
+<kw name="Given que a API está disponível" owner="ajuda">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.711003" level="INFO">Creating Session using : alias=JSONServer, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>JSONServer</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-03-25T22:30:06.711003" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.710002" elapsed="0.001999"/>
+</kw>
+<kw name="And eu realizar uma chamada POST com id &quot;4&quot;, título &quot;another title&quot;, e visualizações 200" owner="profiles" source_name="eu realizar uma chamada POST com id &quot;${post_id}&quot;, título &quot;${post_title}&quot;, e visualizações ${post_views}">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.714005" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.714005" elapsed="0.001506"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.715511" level="INFO">${payload} = {'id': '4', 'title': 'another title', 'views': '200'}</msg>
+<var>${payload}</var>
+<arg>id=${post_id}</arg>
+<arg>title=${post_title}</arg>
+<arg>views=${post_views}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.715511" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.719643" level="INFO">POST Request : url=http://localhost:3000/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body=b'{"id": "4", "title": "another title", "views": "200"}' 
+ </msg>
+<msg time="2024-03-25T22:30:06.719643" level="INFO">POST Response : url=http://localhost:3000/posts 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "4",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.720654" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>JSONServer</arg>
+<arg>/posts</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.716517" elapsed="0.004137"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.720654" level="INFO">${RESPONSE1} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.720654" elapsed="0.000995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.722650" level="INFO">{'id': '4', 'title': 'another title', 'views': '200'}</msg>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.721649" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.713004" elapsed="0.009646"/>
+</kw>
+<kw name="When eu realizar uma chamada DELETE com o id &quot;4&quot;" owner="profiles" source_name="eu realizar uma chamada DELETE com o id &quot;${post_id}&quot;">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.725353" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.725353" elapsed="0.001009"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.729823" level="INFO">DELETE Request : url=http://localhost:3000/posts/4 
+ path_url=/posts/4 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-03-25T22:30:06.729823" level="INFO">DELETE Response : url=http://localhost:3000/posts/4 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "4",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.729823" level="INFO">${responseDelete} = &lt;Response [200]&gt;</msg>
+<var>${responseDelete}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${post_id}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.726362" elapsed="0.004470"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.731829" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${responseDelete}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.730832" elapsed="0.000997"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.723649" elapsed="0.008180"/>
+</kw>
+<kw name="Then o status code da resposta deve ser 200" owner="ajuda" source_name="o status code da resposta deve ser ${expected_status_code}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.733828" level="INFO">200</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.733828" elapsed="0.001507"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.735335" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.735335" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.732830" elapsed="0.003510"/>
+</kw>
+<doc>Como usuário, quero deletar uma postagem na API</doc>
+<status status="PASS" start="2024-03-25T22:30:06.709002" elapsed="0.028339"/>
+</test>
+<test id="s1-s1-s1-t3" name="Buscar Postagem por ID" line="27">
+<kw name="Given que a API está disponível" owner="ajuda">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.740346" level="INFO">Creating Session using : alias=JSONServer, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>JSONServer</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-03-25T22:30:06.740346" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.738346" elapsed="0.002999"/>
+</kw>
+<kw name="And eu realizar uma chamada POST com id &quot;5&quot;, título &quot;another title&quot;, e visualizações 200" owner="profiles" source_name="eu realizar uma chamada POST com id &quot;${post_id}&quot;, título &quot;${post_title}&quot;, e visualizações ${post_views}">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.745346" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.744350" elapsed="0.000996"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.745850" level="INFO">${payload} = {'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<var>${payload}</var>
+<arg>id=${post_id}</arg>
+<arg>title=${post_title}</arg>
+<arg>views=${post_views}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.745346" elapsed="0.000504"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.749855" level="INFO">POST Request : url=http://localhost:3000/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body=b'{"id": "5", "title": "another title", "views": "200"}' 
+ </msg>
+<msg time="2024-03-25T22:30:06.749855" level="INFO">POST Response : url=http://localhost:3000/posts 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.749855" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>JSONServer</arg>
+<arg>/posts</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.745850" elapsed="0.004005"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.750855" level="INFO">${RESPONSE1} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.749855" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.751856" level="INFO">{'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.750855" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.743348" elapsed="0.008508"/>
+</kw>
+<kw name="When eu realizar uma chamada GET com o id &quot;5&quot;" owner="profiles" source_name="eu realizar uma chamada GET com o id &quot;${post_id}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.755357" level="INFO">GET Request : url=http://localhost:3000/posts/5 
+ path_url=/posts/5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-03-25T22:30:06.755357" level="INFO">GET Response : url=http://localhost:3000/posts/5 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.755357" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${post_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.753854" elapsed="0.001503"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.756434" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.756434" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.752856" elapsed="0.003578"/>
+</kw>
+<kw name="Then o status code da resposta deve ser 200" owner="ajuda" source_name="o status code da resposta deve ser ${expected_status_code}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.760441" level="INFO">200</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.759441" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.761439" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.760441" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.757438" elapsed="0.004001"/>
+</kw>
+<kw name="And o título da postagem criada deve ser &quot;another title&quot;" owner="profiles" source_name="o título da postagem criada deve ser &quot;${expected_title}&quot;">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.764438" level="INFO">${created_post} = {'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.764438" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${created_post['title']}</arg>
+<arg>${expected_title}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.765438" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.762438" elapsed="0.003000"/>
+</kw>
+<kw name="And as visualizações da postagem criada devem ser 200" owner="profiles" source_name="as visualizações da postagem criada devem ser ${expected_views}">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.767771" level="INFO">${created_post} = {'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.767771" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${created_post['views']}</arg>
+<arg>${expected_views}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.767771" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.766771" elapsed="0.001999"/>
+</kw>
+<kw name="And eu realizar uma chamada DELETE com o id da postagem criada" owner="ajuda">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.770771" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.770771" elapsed="0.000000"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.773771" level="INFO">DELETE Request : url=http://localhost:3000/posts/5 
+ path_url=/posts/5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-03-25T22:30:06.773771" level="INFO">DELETE Response : url=http://localhost:3000/posts/5 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.773771" level="INFO">${responseDelete} = &lt;Response [200]&gt;</msg>
+<var>${responseDelete}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${RESPONSE1.json()['id']}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.770771" elapsed="0.004588"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.775359" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${responseDelete}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.775359" elapsed="0.001007"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.769773" elapsed="0.006593"/>
+</kw>
+<doc>Como usuário, buscar uma postagem por id</doc>
+<status status="PASS" start="2024-03-25T22:30:06.738346" elapsed="0.039023"/>
+</test>
+<test id="s1-s1-s1-t4" name="Atualizar Postagem Existente e Verificar Dados" line="37">
+<kw name="Given que a API está disponível" owner="ajuda">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.781365" level="INFO">Creating Session using : alias=JSONServer, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>JSONServer</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-03-25T22:30:06.780365" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.778367" elapsed="0.002998"/>
+</kw>
+<kw name="And eu realizar uma chamada POST com id &quot;5&quot;, título &quot;another title&quot;, e visualizações 200" owner="profiles" source_name="eu realizar uma chamada POST com id &quot;${post_id}&quot;, título &quot;${post_title}&quot;, e visualizações ${post_views}">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.784365" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.784365" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.785363" level="INFO">${payload} = {'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<var>${payload}</var>
+<arg>id=${post_id}</arg>
+<arg>title=${post_title}</arg>
+<arg>views=${post_views}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.785363" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.789461" level="INFO">POST Request : url=http://localhost:3000/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body=b'{"id": "5", "title": "another title", "views": "200"}' 
+ </msg>
+<msg time="2024-03-25T22:30:06.789461" level="INFO">POST Response : url=http://localhost:3000/posts 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "another title",
+  "views": "200"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.789461" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>JSONServer</arg>
+<arg>/posts</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.785363" elapsed="0.004098"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.790461" level="INFO">${RESPONSE1} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.789461" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.791461" level="INFO">{'id': '5', 'title': 'another title', 'views': '200'}</msg>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.790461" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.783364" elapsed="0.008097"/>
+</kw>
+<kw name="When eu realizar uma chamada PUT para atualizar a postagem com id &quot;5&quot; com o título &quot;updated title&quot; e visualizações 300" owner="profiles" source_name="eu realizar uma chamada PUT para atualizar a postagem com id &quot;${post_id}&quot; com o título &quot;${post_title}&quot; e visualizações ${post_views}">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.794463" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.794463" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.795460" level="INFO">${payload} = {'id': '5', 'title': 'updated title', 'views': '300'}</msg>
+<var>${payload}</var>
+<arg>id=${post_id}</arg>
+<arg>title=${post_title}</arg>
+<arg>views=${post_views}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.794463" elapsed="0.000997"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.798552" level="INFO">PUT Request : url=http://localhost:3000/posts/5 
+ path_url=/posts/5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body=b'{"id": "5", "title": "updated title", "views": "300"}' 
+ </msg>
+<msg time="2024-03-25T22:30:06.798552" level="INFO">PUT Response : url=http://localhost:3000/posts/5 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "updated title",
+  "views": "300"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.798552" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${post_id}</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.795460" elapsed="0.004091"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.799551" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.799551" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.792462" elapsed="0.007089"/>
+</kw>
+<kw name="Then o status code da resposta deve ser 200" owner="ajuda" source_name="o status code da resposta deve ser ${expected_status_code}">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.802551" level="INFO">200</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.802551" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.803553" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE1.status_code}</arg>
+<arg>${expected_status_code}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.803553" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.801550" elapsed="0.002003"/>
+</kw>
+<kw name="And o título da postagem criada deve ser &quot;updated title&quot;" owner="profiles" source_name="o título da postagem criada deve ser &quot;${expected_title}&quot;">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.806060" level="INFO">${created_post} = {'id': '5', 'title': 'updated title', 'views': '300'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.806060" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${created_post['title']}</arg>
+<arg>${expected_title}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.806060" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.805057" elapsed="0.002003"/>
+</kw>
+<kw name="And as visualizações da postagem criada devem ser 300" owner="profiles" source_name="as visualizações da postagem criada devem ser ${expected_views}">
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-03-25T22:30:06.810061" level="INFO">${created_post} = {'id': '5', 'title': 'updated title', 'views': '300'}</msg>
+<var>${created_post}</var>
+<arg>${RESPONSE1.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.809061" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${created_post['views']}</arg>
+<arg>${expected_views}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.810061" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.808061" elapsed="0.002999"/>
+</kw>
+<kw name="And eu realizar uma chamada DELETE com o id da postagem criada" owner="ajuda">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.813062" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.813062" elapsed="0.001001"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2024-03-25T22:30:06.817157" level="INFO">DELETE Request : url=http://localhost:3000/posts/5 
+ path_url=/posts/5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-03-25T22:30:06.817157" level="INFO">DELETE Response : url=http://localhost:3000/posts/5 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'tinyhttp', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE', 'Access-Control-Allow-Headers': 'content-type', 'Content-Type': 'application/json', 'Date': 'Tue, 26 Mar 2024 01:30:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '61'} 
+ body={
+  "id": "5",
+  "title": "updated title",
+  "views": "300"
+} 
+ </msg>
+<msg time="2024-03-25T22:30:06.817157" level="INFO">${responseDelete} = &lt;Response [200]&gt;</msg>
+<var>${responseDelete}</var>
+<arg>JSONServer</arg>
+<arg>/posts/${RESPONSE1.json()['id']}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.814063" elapsed="0.003094"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-03-25T22:30:06.818157" level="INFO">${RESPONSE1} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE1}</arg>
+<arg>${responseDelete}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-03-25T22:30:06.817157" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-03-25T22:30:06.812061" elapsed="0.006096"/>
+</kw>
+<doc>Como usuário, quero atualizar uma postagem existente na API e verificar seus dados</doc>
+<status status="PASS" start="2024-03-25T22:30:06.778367" elapsed="0.041791"/>
+</test>
+<status status="PASS" start="2024-03-25T22:30:06.532284" elapsed="0.287874"/>
 </suite>
-<status status="PASS" start="2024-03-24T02:19:35.175712" elapsed="0.154097"/>
+<status status="PASS" start="2024-03-25T22:30:06.529283" elapsed="0.292874"/>
 </suite>
-<status status="PASS" start="2024-03-24T02:19:35.158204" elapsed="0.172605"/>
+<status status="PASS" start="2024-03-25T22:30:06.512256" elapsed="0.309901"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Api Testing">Api Testing</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Api Testing.Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Api Testing2">Api Testing.Tests.Api Testing2</stat>
+<stat pass="4" fail="0" skip="0" id="s1" name="Api Testing">Api Testing</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1" name="Tests">Api Testing.Tests</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1-s1" name="rotaProfiles">Api Testing.Tests.rotaProfiles</stat>
 </suite>
 </statistics>
 <errors>
