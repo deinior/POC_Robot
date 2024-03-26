@@ -20,3 +20,6 @@ eu realizar uma chamada DELETE com o id da postagem criada
     ${headers}=    Create Dictionary    Content-Type    application/json
     ${responseDelete}=    DELETE On Session     JSONServer    /posts/${RESPONSE1.json()['id']}    headers=${headers}
     Set Test Variable    ${RESPONSE1}    ${responseDelete}
+
+a resposta deve conter "${expected_length}" elemento
+    Length Should Be    ${RESPONSE1.json()}    ${expected_length}

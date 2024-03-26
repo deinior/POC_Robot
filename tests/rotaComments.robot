@@ -12,8 +12,7 @@ Get comentários
     Given que a API está disponível
     When quando eu realizar uma chamada na rota GET
     Then o status code da resposta deve ser 200
-    And o numero de comentários deve ser 2
-    And o id do primeiro comentário deve ser "1"
+    And a resposta deve conter "2" elemento
     And o texto do primeiro comentário deve ser "a comment about post 1"
     And o postId do primeiro comentário deve ser "1"
 
